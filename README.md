@@ -91,4 +91,31 @@ rank,player_id,mean_score
 9,player0011,990
 9,player0012,990
 ```
- 
+
+# 使い方
+### ① 初期化してください。
+```
+$ ./envrn.sh init
+```
+
+### ② `src/`以下に実行ファイルを作成してください。
+
+example: `src/main.py`
+
+### ③ .env の `EXEC_COMMAND` に実行コマンドを記載してください。
+
+example:
+```
+EXEC_COMMAND="python3 src/main.py"
+```
+
+### ④ テストを実行してください。
+```
+$ ./envrn.sh test
+```
+
+# テスト
+|  テスト  |  特徴  |
+| ---- | ---- |
+|  test1  |  通常のケース  |
+|  test2  |  通常のケース  |

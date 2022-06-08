@@ -1,0 +1,6 @@
+rank,player_id,mean_score
+1,player0001,12345
+2,player0002,10000
+3,player0041,300
+4,player0031,200
+5,player0021,100
