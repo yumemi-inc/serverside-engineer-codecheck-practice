@@ -11,6 +11,18 @@ init() {
     cp .env.example .env
 }
 
+_exec_diff() {
+    case=$1
+    $EXEC_COMMAND ${case}/game_score_log.csv > ${case}/actual.txt
+    result=`diff ${case}/expect.txt ${case}/actual.txt`
+    if [ "$result" = "" ]; then
+        printf "\033[32m%s\033[m\n" "テストを通過しました"
+    else
+        printf "\033[31m%s\033[m\n" "テストに失敗しました"
+        echo ${result}
+    fi
+}
+
 test() {
     # テストケースを取得
     testcases_path="./testcases/common/*"
@@ -19,14 +31,7 @@ test() {
     for case in $testcases;
     do
         printf "\033[1m%s\033[m\n" "${case} を実行します"
-        $EXEC_COMMAND ${case}/game_score_log.csv > ${case}/actual.txt
-        result=`diff ${case}/expect.txt ${case}/actual.txt`
-        if [ "$result" = "" ]; then
-            printf "\033[32m%s\033[m\n" "テストを通過しました"
-        else
-            printf "\033[31m%s\033[m\n" "テストに失敗しました"
-            echo ${result}
-        fi
+        _exec_diff $case
         echo $'\n'
     done
 }
@@ -38,7 +43,7 @@ gen-csv() {
 testx() {
     case='./testcases/extra/test-x-1/'
     printf "\033[1m%s\033[m\n" "${case} を実行します"
-    $EXEC_COMMAND ${case}/game_score_log.csv > ${case}/actual.txt
+    _exec_diff $case
     echo $'\n'
 }
 
