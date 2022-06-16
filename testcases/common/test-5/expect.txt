@@ -1,0 +1,1 @@
+rank,player_id,mean_score

@@ -1,0 +1,11 @@
+rank,player_id,mean_score
+1,player854,99
+1,player904,99
+3,player465,98
+3,player747,98
+5,player106,97
+5,player434,97
+7,player219,96
+7,player600,96
+7,player766,96
+10,player965,92
