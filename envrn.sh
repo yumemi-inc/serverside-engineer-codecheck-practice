@@ -3,6 +3,9 @@
 
 # define each task as bash functions
 
+gen_huge_csv() {
+    echo | awk -f csv-generator/awk/gen.awk > ./testcases/test-x-3/game_score_log.csv
+}
 
 init() {
     cp .env.example .env
@@ -10,7 +13,7 @@ init() {
 
 test() {
     # テストケースを取得
-    testcases_path="./testcases/*"
+    testcases_path="./testcases/common/*"
     testcases=`find $testcases_path -type d`
 
     for case in $testcases;
@@ -28,6 +31,17 @@ test() {
     done
 }
 
+gen-csv() {
+    echo | awk -f csv-generator/awk/gen.awk > ./testcases/extra/test-x-1/game_score_log.csv
+}
+
+testx() {
+    case='./testcases/extra/test-x-1/'
+    printf "\033[1m%s\033[m\n" "${case} を実行します"
+    $EXEC_COMMAND ${case}/game_score_log.csv > ${case}/actual.txt
+    echo $'\n'
+}
+
 # add descriptions to each task
 
 help() {
@@ -37,6 +51,8 @@ Usage: envrn.sh TASK|COMMAND [OPTIONS]
 TASK:
     init: 初期セットアップ
     test: テスト実行
+    testx: 拡張テスト実行
+    get-csv: 巨大なcsvを生成
     help: このメッセージを表示する
 COMMAND:
     any command that will be run with .env read into
