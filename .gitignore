@@ -2,3 +2,6 @@
 
 # 結果出力ファイル
 testcases/**/actual.txt
+
+# pandasに失敗した
+src/main2.py
