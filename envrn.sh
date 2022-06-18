@@ -41,7 +41,7 @@ gen-csv() {
 }
 
 testx() {
-    case='./testcases/extra/test-x-1/'
+    case='./testcases/extra/test-x-1'
     printf "\033[1m%s\033[m\n" "${case} を実行します"
     _exec_diff $case
     echo $'\n'
