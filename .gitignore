@@ -2,3 +2,7 @@
 
 # 結果出力ファイル
 testcases/**/actual.txt
+
+
+# main2を追跡しない。
+src/main2.py
